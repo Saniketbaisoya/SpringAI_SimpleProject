@@ -58,4 +58,24 @@ public class PromptController {
                           .content();
         return result;
     }
+
+    /* http://localhost:8080/api/prompt-chat/one-shot/chat */
+    @GetMapping("/one-shot/chat")
+    public String oneShot(@RequestParam String message){
+        String result = chatClient.prompt()
+                        .user(u -> u.text(""" 
+                            Tell me a single add on product that can be recommended to a user based on the user's current cart items.
+                            Only respond with the product name, nothing else. Assume we are working on a food e-commerce website.
+                            
+                            Example:
+                            Text: "pizza", "burger", "coke"
+                            Recommended Add on Product: "chips"
+
+                            Text: {cartItems}
+                            """).param("cartItems", message))
+                        .call()
+                        .content();
+
+        return result;
+    }
 }
