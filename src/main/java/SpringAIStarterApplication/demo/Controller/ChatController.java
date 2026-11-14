@@ -20,7 +20,7 @@ public class ChatController {
     @GetMapping("/simpleChat/{message}")
     public String simpleChat(@PathVariable String message){
         String response = chatClient.prompt()
-                          .user(message)
+                          .user(message) 
                           .call()
                           .content();
         
