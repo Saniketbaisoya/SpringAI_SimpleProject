@@ -71,8 +71,8 @@ public class PromptController {
                             Text: "pizza", "burger", "coke"
                             Recommended Add on Product: "chips"
 
-                            Text: {cartItems}
-                            """).param("cartItems", message))
+                            Text: {cartItem}
+                            """).param("cartItem", message))
                         .call()
                         .content();
 
